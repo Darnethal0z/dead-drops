@@ -15,10 +15,10 @@ With this you can :
 
 **NOTE** : pip package is coming soon.
 
-Install it with pip : 
+~~Install it with pip :~~
 
 ```
-pip install deaddrops
+$ pip install deaddrops
 ```
 
 ## Usage
