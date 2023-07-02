@@ -13,9 +13,7 @@ With this you can :
 
 ## Installation
 
-**NOTE** : pip package is coming soon.
-
-~~Install it with pip :~~
+Install it with pip :
 
 ```
 $ pip install deaddrops
