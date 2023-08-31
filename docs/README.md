@@ -1,6 +1,8 @@
 # `deaddrops` documentation
 ---
 
+See the `examples` folder to get some ready-to-run examples stubs.
+
 ## Interact with the dead drops database
 
 ### Declaration
@@ -8,6 +10,8 @@
 ```
 class DatabaseHelper()
 ```
+
+*Package* : `deaddrops.database`
 
 *Parameters*: 
 
@@ -70,6 +74,8 @@ getDatabaseContent(location: str = "", max_distance: int = 5000, amount: int = 9
 				"state": STATE,
 				"country": COUNTRY
 			}
+			"size": SIZE,
+			"status": STATUS
 		}
 		...
 	}
@@ -84,6 +90,8 @@ getDatabaseContent(location: str = "", max_distance: int = 5000, amount: int = 9
 - `CITY` : The indicated city
 - `STATE` : The indicated state
 - `COUNTRY` : The indicated country
+- `SIZE` : The dead drop size, in Gb
+- `STATUS` : The actual dead drop status
 
 ---
 
@@ -148,6 +156,8 @@ searchTerm(database_content_dict: str, term: str, case_sensitive: bool = False)
 ```
 class SubmitHelper()
 ```
+
+*Package* : `deaddrops.submit`
 
 *Parameters*: 
 
