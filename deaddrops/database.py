@@ -56,12 +56,20 @@ class DatabaseHelper:
                 "permalink": "https://deaddrops.com/db/"
                 + html.unescape(actual_drop[1].find("a", href=True).attrs["href"]),
                 "location": {
-                    "street": html.unescape(actual_drop[2].text),
-                    "city": html.unescape(actual_drop[3].text),
-                    "state": html.unescape(actual_drop[4].text),
-                    "country": actual_drop[5].text,
+                    "street": html.unescape(
+                        actual_drop[2].text if actual_drop[2].text else "unspecified"
+                    ),
+                    "city": html.unescape(
+                        actual_drop[3].text if actual_drop[3].text else "unspecified"
+                    ),
+                    "state": html.unescape(
+                        actual_drop[4].text if actual_drop[4].text else "unspecified"
+                    ),
+                    "country": actual_drop[5].text
+                    if actual_drop[5].text
+                    else "unspecified",
                 },
-                "size": actual_drop[6].text,
+                "size": actual_drop[6].text if actual_drop[6].text else "unspecified",
                 "status": actual_drop[7].find("div").get("title"),
             }
 
@@ -75,33 +83,28 @@ class DatabaseHelper:
 
         return database_content_dict
 
-    def searchTerm(
-        self, database_content_dict: str, term: str, case_sensitive: bool = False
-    ) -> dict:
-        def __extract_dict_values(self, dictionary):
+    def searchTerm(self, term: str, case_sensitive: bool = False) -> dict:
+        def __extract_dict_values(dictionary):
             result_list = ""
 
             for d in dictionary.items():
-                if type(d[1]) is dict:
-                    result_list += " " + self.__extract_dict_values(d[1])
-
-                else:
-                    result_list += " " + str(d[1])
+                result_list += (
+                    " " + (__extract_dict_values(d[1]))
+                    if type(d[1]) is dict
+                    else str(d[1])
+                )
 
             return result_list
 
         result_dict = {}
+        database_content_dict = self.getDatabaseContent()
 
-        for entry in database_content_dict.get("results"):
-            content = self.__extract_dict_values(
-                database_content_dict.get("results")[entry]
-            )
+        for entry_id, entry_content in database_content_dict["results"].items():
+            list_entry_content = __extract_dict_values(entry_content)
 
             if (term.lower() if not case_sensitive else term) in (
-                content.lower() if not case_sensitive else content
+                list_entry_content.lower() if not case_sensitive else list_entry_content
             ):
-                result_dict.update(
-                    {str(entry): database_content_dict.get("results")[entry]}
-                )
+                result_dict.update({str(entry_id): entry_content})
 
         return result_dict

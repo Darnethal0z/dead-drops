@@ -93,17 +93,18 @@ getDatabaseContent(location: str = "", max_distance: int = 5000, amount: int = 9
 - `SIZE` : The dead drop size, in Gb
 - `STATUS` : The actual dead drop status
 
+*Additional note* : The parameter `location` will be geocoded into coordinates on the deaddrops.com server side. It is a search by city and country.
+
 ---
 
 ```
-searchTerm(database_content_dict: str, term: str, case_sensitive: bool = False)
+searchTerm(term: str, case_sensitive: bool = False)
 ```
 
-> Search for a specific term in a database content dictionary
+> Search for a specific term in the dead drop database content
 
 *Parameters*:
 
-- `database_content_dict` : The database content dictionary to search in (see `getDatabaseContent()` upper)
 - `term` : The term to search
 - `case_sensitive` : Indicate a case sensitive search or not
 
@@ -123,6 +124,8 @@ searchTerm(database_content_dict: str, term: str, case_sensitive: bool = False)
 			"state": STATE,
 			"country": COUNTRY
 		}
+		"size": SIZE,
+		"status": STATUS
 	}
 	...
 }
@@ -136,6 +139,8 @@ searchTerm(database_content_dict: str, term: str, case_sensitive: bool = False)
 - `CITY` : The indicated city
 - `STATE` : The indicated state
 - `COUNTRY` : The indicated country
+- `SIZE` : The dead drop size, in Gb
+- `STATUS` : The actual dead drop status
 
 ## Submit a dead drop
 

@@ -1,13 +1,14 @@
-# Stub that fetches the 20 first dead drops entries and print thein informations
+# Stub that search for a specific term in the DeadDrops database
 
 from deaddrops.database import DatabaseHelper
 
 helper = DatabaseHelper()
 
-# Get the 20 first entries of the database
-db_content = helper.getDatabaseContent(amount=20)
+# Search in all the database content for the value "Toronto"
+# The parameter 'case_sensitive' can be set to True to make a case sensitive search
+search_result = helper.searchTerm("Toronto")
 
-for drop_id, drop_infos in db_content["results"].items():
+for drop_id, drop_infos in search_result.items():
     print(f"Drop ID {drop_id} ({drop_infos.get('permalink')}) ")
     print(f"  Name : {drop_infos.get('name')}")
     print(f"  Date : {drop_infos.get('date')}")

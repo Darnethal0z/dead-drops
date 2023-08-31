@@ -96,7 +96,7 @@ class SubmitHelper:
         ]:
             counter += 1
 
-            if not file_path:    
+            if not file_path:
                 continue
 
             # deaddrops.com does not support files larger than 1Mb
@@ -114,7 +114,7 @@ class SubmitHelper:
                     (
                         file_path.split(local_ifs)[-1],
                         open(file_path, "rb"),
-                        "image/" + os.path.splitext(file_path)[1].replace('.', ''),
+                        "image/" + os.path.splitext(file_path)[1].replace(".", ""),
                     ),
                 )
             )
