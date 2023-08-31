@@ -1,10 +1,10 @@
-# Stub that search for a specific term in the DeadDrops database
+# Search for a specific term in the DeadDrops database
 
 from deaddrops.database import DatabaseHelper
 
 helper = DatabaseHelper()
 
-# Search in all the database content for the value "Toronto"
+# Search in the database content for the value "Toronto"
 # The parameter 'case_sensitive' can be set to True to make a case sensitive search
 search_result = helper.searchTerm("Toronto")
 

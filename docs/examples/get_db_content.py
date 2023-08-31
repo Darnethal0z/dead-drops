@@ -1,4 +1,4 @@
-# Stub that fetches the 20 first dead drops entries and print thein informations
+# Fetch the 20 first dead drops entries and print their informations
 
 from deaddrops.database import DatabaseHelper
 

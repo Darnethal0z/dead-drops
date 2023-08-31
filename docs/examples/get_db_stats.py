@@ -1,4 +1,4 @@
-# Fetches actual DeadDrops database statistics and print them
+# Fetch actual DeadDrops database statistics and print them
 
 from deaddrops.database import DatabaseHelper
 
