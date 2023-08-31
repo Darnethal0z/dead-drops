@@ -7,7 +7,7 @@ packages = ["deaddrops"]
 
 [project]
 name = "deaddrops"
-version = "1.1.0"
+version = "1.1.1"
 description = "A simple python library to interact with the dead drops official website."
 authors = [
   { name="Darnethal0z"},
