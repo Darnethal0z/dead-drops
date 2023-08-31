@@ -16,7 +16,9 @@ With this you can :
 Install it with pip :
 
 ```
-$ pip install deaddrops
+$ git clone https://github.com/Darnethal0z/dead-drops
+$ cd dead-drops
+$ pip install .
 ```
 
 ## Usage
