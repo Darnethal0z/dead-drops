@@ -208,7 +208,7 @@ setLocationInformations(
 
 *Parameters*:
 
-- `alpha2_country` : The dead drop location country, in alpha2 format
+- `alpha2_country` : The dead drop location country, in alpha2 format : https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 - `state` : The dead drop location state
 - `city` : The dead drop location city
 - `zipcode` : The dead drop location zipcode

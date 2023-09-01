@@ -45,15 +45,10 @@ class SubmitHelper:
         latitude: str = "",
         longitude: str = "",
     ) -> None:
-        # Certified Regex moment ©
-        # It works, but please propose an alternative if you have one
-        if not re.search(
-            r"^(A(D|E|F|G|I|L|M|N|O|R|S|T|Q|U|W|X|Z)|B(A|B|D|E|F|G|H|I|J|L|M|N|O|R|S|T|V|W|Y|Z)|C(A|C|D|F|G|H|I|K|L|M|N|O|R|U|V|X|Y|Z)|D(E|J|K|M|O|Z)|E(C|E|G|H|R|S|T)|F(I|J|K|M|O|R)|G(A|B|D|E|F|G|H|I|L|M|N|P|Q|R|S|T|U|W|Y)|H(K|M|N|R|T|U)|I(D|E|Q|L|M|N|O|R|S|T)|J(E|M|O|P)|K(E|G|H|I|M|N|P|R|W|Y|Z)|L(A|B|C|I|K|R|S|T|U|V|Y)|M(A|C|D|E|F|G|H|K|L|M|N|O|Q|P|R|S|T|U|V|W|X|Y|Z)|N(A|C|E|F|G|I|L|O|P|R|U|Z)|OM|P(A|E|F|G|H|K|L|M|N|R|S|T|W|Y)|QA|R(E|O|S|U|W)|S(A|B|C|D|E|G|H|I|J|K|L|M|N|O|R|T|V|Y|Z)|T(C|D|F|G|H|J|K|L|M|N|O|R|T|V|W|Z)|U(A|G|M|S|Y|Z)|V(A|C|E|G|I|N|U)|W(F|S)|Y(E|T)|Z(A|M|W))$",
-            alpha2_country,
-        ):
+        
+        # Every alpha2 codes are made with this pattern : https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+        if not re.search(r"^[A-Z]{2}$", alpha2_country):
             raise ValueError("Parameter 'alpha2_country' is not a valid alpha2 format")
-
-        self.is_location_info_set = True
 
         if latitude and not re.search(
             r"^(\+|-)?((\d((\.)|\.\d{1,6})?)|(0*?[0-8]\d((\.)|\.\d{1,6})?)|(0*?90((\.)|\.0{1,6})?))$",
@@ -78,6 +73,8 @@ class SubmitHelper:
                 "lon": longitude,
             }
         )
+
+        self.is_location_info_set = True
 
     def setDescriptionInformations(
         self,
